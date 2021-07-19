@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Curso } from 'src/app/interfaces/curso.interface';
 import { CursosService } from 'src/app/services/cursos.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-lista',
@@ -22,6 +23,8 @@ export class ListaComponent implements OnInit {
       }
 
     );
+
+    document.title = environment.title + 'Nuestros Cursos';
   }
 
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Curso } from 'src/app/interfaces/curso.interface';
 import { CursosService } from 'src/app/services/cursos.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-detalles',
@@ -22,9 +23,15 @@ export class DetallesComponent implements OnInit {
   ngOnInit(): void {
     this.activateRoute.queryParams.subscribe(params => {
       this.cursoSvc.getCursoById(params.id).subscribe(
-        curso => this.curso = curso
+        curso => {
+        this.curso = curso;
+        document.title = environment.title + this.curso.nombre;
+      }
+
       )
     });
+
+
   }
 
   onDelete(): void {

@@ -7,7 +7,8 @@ import { CursosComponent } from './cursos.component';
 import { ListaComponent } from './lista/lista.component';
 import { SaveComponent } from './save/save.component';
 import { DetallesComponent } from './detalles/detalles.component';
-import { VolverComponent } from 'src/app/components/shared/volver/volver.component';
+import { AppModule } from 'src/app/app.module';
+
 
 
 @NgModule({
@@ -15,13 +16,12 @@ import { VolverComponent } from 'src/app/components/shared/volver/volver.compone
     CursosComponent,
     ListaComponent,
     SaveComponent,
-    DetallesComponent,
-    VolverComponent
+    DetallesComponent
   ],
   imports: [
     CommonModule,
     CursosRoutingModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class CursosModule { }

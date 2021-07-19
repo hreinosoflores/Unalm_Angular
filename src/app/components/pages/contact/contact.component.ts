@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Mensaje } from 'src/app/interfaces/mensaje.service';
 import { BandejaMensajesService } from 'src/app/services/bandeja-mensajes.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-contact',
@@ -19,6 +20,7 @@ export class ContactComponent implements OnInit {
   constructor(private bandejaMsgSvc:BandejaMensajesService,private router: Router) { }
 
   ngOnInit(): void {
+    document.title = environment.title + 'Contáctenos';
 
   }
 

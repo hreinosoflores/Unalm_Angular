@@ -3,6 +3,7 @@ import { Curso } from 'src/app/interfaces/curso.interface';
 import { CursosService } from 'src/app/services/cursos.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-save',
@@ -19,8 +20,10 @@ export class SaveComponent implements OnInit {
     sumilla: ''
   };
 
-  constructor(private cursoSvc: CursosService, private router: Router, private activateRoute: ActivatedRoute) {
+  formTitle:string='Nuevo Curso';
+  formButton:string='Registrar';
 
+  constructor(private cursoSvc: CursosService, private router: Router, private activateRoute: ActivatedRoute) {
 
   }
 
@@ -28,9 +31,18 @@ export class SaveComponent implements OnInit {
     this.activateRoute.queryParams.subscribe(params => {
       if(params.id){
         this.cursoSvc.getCursoById(params.id).subscribe(
-          curso => this.curso = curso);
+          curso =>{
+            this.curso = curso;
+            this.formTitle='Editando Curso';
+            this.formButton='Guardar Cambios';
+            document.title = environment.title + 'Editando Curso';
+
+          } );
       }
+
     });
+
+    document.title = environment.title + 'Registrando Nuevo Curso';
 
   }
 

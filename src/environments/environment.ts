@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrlCursos: '/api/Cursos',
-  apiUrlContacto: '/api/BandejaMensajes'
+  apiUrlContacto: '/api/BandejaMensajes',
+  title:'UNALM | '
 };
 
 /*

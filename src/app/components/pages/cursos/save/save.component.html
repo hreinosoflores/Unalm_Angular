@@ -5,7 +5,7 @@
       <form class="bg-white shadow-sm rounded py-3 px-4" #saveForm="ngForm">
 
 
-        <h1 class="display-8 formTitle">XD</h1>
+        <h1 class="display-8 formTitle">{{formTitle}}</h1>
         <hr>
 
         <div class="form-group">
@@ -55,10 +55,11 @@
 
         <div class="d-grid gap-2">
           <button class="btn btn-primary" [disabled]="!saveForm.form.valid" type="submit"
-            (click)="onSubmit()">XD</button>
+            (click)="onSubmit()">{{formButton}}</button>
+            <a class="btn btn-outline-primary" routerLink="/">Cancelar</a>
         </div>
 
-        <app-volver class="d-grid gap-2 mt-2"></app-volver>
+
 
       </form>
 

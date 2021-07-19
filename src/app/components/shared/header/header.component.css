@@ -1,0 +1,9 @@
+.navbar-toggler-icon,
+footer {
+  font-size: 12px;
+}
+
+nav img {
+  width: 32px;
+  margin-right: 10px;
+}

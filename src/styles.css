@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #008f5d;
+  font-family: 'Merriweather', serif;
+}
+
+.title {
+  color: #FFF400;
+}
+
+.formTitle,.cursoTitle {
+  color: #fe2116;
+}
+
+
+main {
+  padding: 150px 0;
+}
+
+
+/*X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  main {
+      padding: 120px 0;
+  }
+
+  .nav-link,
+  footer {
+      font-size: 16px;
+  }
+
+  nav #titulo{
+      font-size: 24px;
+  }
+
+
+  nav img {
+      width: 64px;
+  }
+
+}

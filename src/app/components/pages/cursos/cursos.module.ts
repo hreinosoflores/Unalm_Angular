@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule} from 'ngx-pagination';
 
 import { CursosRoutingModule } from './cursos-routing.module';
 import { CursosComponent } from './cursos.component';
 import { ListaComponent } from './lista/lista.component';
 import { SaveComponent } from './save/save.component';
 import { DetallesComponent } from './detalles/detalles.component';
-import { AppModule } from 'src/app/app.module';
-
+import { ConfirmAlertComponent } from '../../shared/confirm-alert/confirm-alert.component';
 
 
 @NgModule({
@@ -16,12 +16,14 @@ import { AppModule } from 'src/app/app.module';
     CursosComponent,
     ListaComponent,
     SaveComponent,
-    DetallesComponent
+    DetallesComponent,
+    ConfirmAlertComponent
   ],
   imports: [
     CommonModule,
     CursosRoutingModule,
     FormsModule,
+    NgxPaginationModule
   ]
 })
 export class CursosModule { }

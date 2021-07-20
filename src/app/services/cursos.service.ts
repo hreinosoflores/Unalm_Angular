@@ -24,12 +24,11 @@ export class CursosService {
   }
 
   saveCurso(curso:Curso):Observable<Curso>{
+    curso.updatedAt = new Date();
     if(!curso.id){
       curso.createdAt = new Date();
-      curso.updatedAt = new Date();
       return this.http.post<Curso>(this.apiURL, curso);
     }else{
-      curso.updatedAt = new Date();
       return this.http.put<Curso>(`${this.apiURL}/${curso.id}`, curso);
     }
   }

@@ -1,0 +1,5 @@
+pagination-controls  /deep/ .ngx-pagination{
+  margin: 0;
+  padding: 0;
+
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Mensaje } from 'src/app/interfaces/mensaje.service';
 import { BandejaMensajesService } from 'src/app/services/bandeja-mensajes.service';
+import { ConfirmacionService } from 'src/app/services/confirmacion.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -17,7 +18,15 @@ export class ContactComponent implements OnInit {
     comentarios: ''
   };
 
-  constructor(private bandejaMsgSvc:BandejaMensajesService,private router: Router) { }
+  set confirmText(text: string) {
+    this.confirmSvc.confirmText = text;
+  }
+
+  constructor(
+    private bandejaMsgSvc:BandejaMensajesService,
+    private router: Router,
+    private confirmSvc: ConfirmacionService
+    ) { }
 
   ngOnInit(): void {
     document.title = environment.title + 'Contáctenos';
@@ -28,6 +37,7 @@ export class ContactComponent implements OnInit {
     this.bandejaMsgSvc.saveMensaje(this.mensaje).subscribe(
       mensaje => {
         console.log('Mensaje -> ', mensaje);
+        this.confirmText = 'Se enviaron los comentarios';
         this.router.navigate(['/']);
       }
     );

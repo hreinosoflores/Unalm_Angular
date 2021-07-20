@@ -1,4 +1,5 @@
 import { Component} from '@angular/core';
+import { ConfirmacionService } from './services/confirmacion.service';
 
 
 @Component({
@@ -15,7 +16,14 @@ import { Component} from '@angular/core';
 })
 export class AppComponent{
 
+  get confirmText(){
+    return this.confirmSvc.confirmText;
+  }
 
+  constructor(private confirmSvc:ConfirmacionService) {
+
+
+  }
 
 
 }

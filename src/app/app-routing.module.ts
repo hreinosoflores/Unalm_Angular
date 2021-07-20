@@ -11,10 +11,14 @@ const routes: Routes = [
     path: 'cursos',
     loadChildren: () => import('./components/pages/cursos/cursos.module').then(m => m.CursosModule)
   },
-  { path: 'about',
+  {
+    path: 'about',
     loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule)
   },
-  { path: 'contactenos', loadChildren: () => import('./components/pages/contact/contact.module').then(m => m.ContactModule) },
+  {
+    path: 'contactenos',
+    loadChildren: () => import('./components/pages/contact/contact.module').then(m => m.ContactModule)
+  },
   {
     path: '**',
     redirectTo: '',

@@ -1,153 +1,120 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-sm-10 col-lg-6 mx-auto">
+<div class="bg-white p-4 shadow rounded">
 
-      <form class="bg-white shadow-sm rounded py-3 px-4" #saveForm="ngForm">
+  <form #saveForm="ngForm" (ngSubmit)="onSubmit()">
 
+    <span class="display-6 formTitle">{{formTitle}}</span>
 
-        <h1 class="display-8 formTitle">{{formTitle}}</h1>
-        <hr>
-
-        <div class="form-group">
-          <label for="codigo">Código del curso:</label>
-          <input class="form-control bg-light shadow-sm" type="text" id="codigo" name="codigo" required
-            [(ngModel)]="curso.codigo">
+    <hr>
+    <h5>(*) Campos obligatorios</h5><br />
+    <div class="form-group">
+      <input class="form-control bg-light shadow-sm" type="text" placeholder="* Código del curso..." id="codigo"
+        name="codigo" required pattern="^[A-Z]{2}[0-9]{4}$" maxlength="6" [(ngModel)]="curso.codigo" #codigo="ngModel">
+      <div *ngIf="codigo.valid || codigo.pristine;then space else codigoErr"></div>
+      <ng-template #codigoErr>
+        <div *ngIf="codigo.errors?.required" class="alert alert-danger p-0 mb-1">
+          El curso necesita un código.
         </div>
-
-
-        <div class="form-group">
-          <label for="nombre">Nombre del curso:</label>
-          <input class="form-control bg-light shadow-sm" type="text" id="nombre" name="nombre" required
-            [(ngModel)]="curso.nombre">
-
+        <div *ngIf="codigo.errors?.pattern" class="alert alert-danger p-0 mb-1">
+          El código ingresado no coincide con el patrón "AA####".
         </div>
+      </ng-template>
+    </div>
 
 
-        <div class="form-group">
-          <label for="creditos">Cantidad de créditos:</label>
-          <input class="form-control bg-light shadow-sm" type="text" id="creditos" name="creditos" required
-            [(ngModel)]="curso.creditos">
+    <div class="form-group">
+      <input class="form-control bg-light shadow-sm" type="text" placeholder="* Nombre del curso..." id="nombre"
+        name="nombre" required maxlength="100" [(ngModel)]="curso.nombre" #nombre="ngModel">
+      <div *ngIf="nombre.valid || nombre.pristine;then space else nombreErr"></div>
+      <ng-template #nombreErr>
+        <div *ngIf="nombre.errors?.required" class="alert alert-danger p-0 mb-1">
+          El curso necesita un nombre.
         </div>
-
-
-        <div class="form-group">
-          <label for="horas_teoria">Horas de teoría:</label>
-          <input class="form-control bg-light shadow-sm" type="text" id="horas_teoria" name="horas_teoria" required
-            [(ngModel)]="curso.horasTeoria">
+        <div *ngIf="nombre.errors?.maxlength" class="alert alert-danger p-0 mb-1">
+          Nombre demasiado largo.
         </div>
-
-
-
-        <div class="form-group">
-          <label for="horas_practica">Horas de práctica:</label>
-          <input class="form-control bg-light shadow-sm" type="text" id="horas_practica" name="horas_practica" required
-            [(ngModel)]="curso.horasPractica">
-        </div>
-
-
-
-        <div class="form-group">
-          <label for="sumilla">Sumilla:</label>
-          <textarea class="form-control bg-light shadow-sm" name="sumilla" id="sumilla" rows="10" required
-            [(ngModel)]="curso.sumilla"></textarea>
-        </div>
-
-
-        <div class="d-grid gap-2">
-          <button class="btn btn-primary" [disabled]="!saveForm.form.valid" type="submit"
-            (click)="onSubmit()">{{formButton}}</button>
-            <a class="btn btn-outline-primary" routerLink="/">Cancelar</a>
-        </div>
-
-
-
-      </form>
-
-
-
-
-
-      <!-- <form class="bg-white shadow-sm rounded py-3 px-4" method="POST" action="
-              @isset($curso->id)
-                  {{route('curso.update',$curso->id)}}
-              @else
-                  {{route('curso.store')}}
-              @endisset">
-
-              @csrf
-
-              @isset($curso->id)
-              @method('PATCH')
-              @endisset
-
-              <h1 class="display-8 formTitle">{{$formTitle}}</h1>
-              <hr>
-
-              <div class="form-group">
-                  <label for="codigo">Código del curso:</label>
-                  <input
-                      class="form-control bg-light shadow-sm @error('codigo') is-invalid @else border border-2 @enderror"
-                      type="text" id="codigo" name="codigo" value="{{old('codigo',$curso->codigo)}}">
-                  @include('partials.error-messages',['label'=>'codigo'])
-              </div>
-
-
-              <div class="form-group">
-                  <label for="nombre">Nombre del curso:</label>
-                  <input
-                      class="form-control bg-light shadow-sm @error('nombre') is-invalid @else border border-2 @enderror"
-                      type="text" id="nombre" name="nombre" value="{{old('nombre',$curso->nombre)}}">
-                  @include('partials.error-messages',['label'=>'nombre'])
-              </div>
-
-
-              <div class="form-group">
-                  <label for="creditos">Cantidad de créditos:</label>
-                  <input
-                      class="form-control bg-light shadow-sm @error('creditos') is-invalid @else border border-2 @enderror"
-                      type="text" id="creditos" name="creditos" value="{{old('creditos',$curso->creditos)}}">
-                  @include('partials.error-messages',['label'=>'creditos'])
-              </div>
-
-
-              <div class="form-group">
-                  <label for="horas_teoria">Horas de teoría:</label>
-                  <input
-                      class="form-control bg-light shadow-sm @error('horas_teoria') is-invalid @else border border-2 @enderror"
-                      type="text" id="horas_teoria" name="horas_teoria"
-                      value="{{old('horas_teoria',$curso->horas_teoria)}}">
-                  @include('partials.error-messages',['label'=>'horas_teoria'])
-              </div>
-
-
-
-              <div class="form-group">
-                  <label for="horas_practica">Horas de práctica:</label>
-                  <input
-                      class="form-control bg-light shadow-sm @error('horas_practica') is-invalid @else border border-2 @enderror"
-                      type="text" id="horas_practica" name="horas_practica"
-                      value="{{old('horas_practica',$curso->horas_practica)}}">
-                  @include('partials.error-messages',['label'=>'horas_practica'])
-              </div>
-
-
-
-              <div class="form-group">
-                  <label for="sumilla">Sumilla:</label>
-                  <textarea
-                      class="form-control bg-light shadow-sm @error('sumilla') is-invalid @else border border-2 @enderror"
-                      name="sumilla" id="sumilla" rows="10">{{old('sumilla' ,$curso->sumilla)}}</textarea>
-                  @include('partials.error-messages',['label'=>'sumilla'])
-              </div>
-
-
-              <div class="d-grid gap-2">
-                  <button class="btn btn-primary">{{$btn}}</button>
-                  @include('partials.volver')
-              </div>
-
-          </form> -->
+      </ng-template>
 
     </div>
-  </div>
+
+
+    <div class="form-group">
+      <input class="form-control bg-light shadow-sm" type="number" placeholder="* Cantidad de créditos..." id="creditos"
+        name="creditos" required pattern="^[0-9]{1,4}$" min="1" [(ngModel)]="curso.creditos" #creditos="ngModel">
+      <div *ngIf="creditos.valid || creditos.pristine;then space else creditosErr"></div>
+      <ng-template #creditosErr>
+        <div *ngIf="creditos.errors?.required" class="alert alert-danger p-0 mb-1">
+          Se necesita asignarle créditos al curso.
+        </div>
+        <div *ngIf="creditos.errors?.pattern" class="alert alert-danger p-0 mb-1">
+          Ingresar un numero entero positivo menor de 4 dígitos.
+        </div>
+        <div *ngIf="creditos.errors?.min" class="alert alert-danger p-0 mb-1">
+          Debe ser mayor que cero.
+        </div>
+      </ng-template>
+    </div>
+
+
+    <div class="form-group">
+      <input class="form-control bg-light shadow-sm" type="number" placeholder="* Horas de teoría..." id="horas_teoria"
+        name="horas_teoria" required pattern="^[0-9]{1,4}$" min="1" [(ngModel)]="curso.horasTeoria"
+        #horas_teoria="ngModel">
+      <div *ngIf="horas_teoria.valid || horas_teoria.pristine;then space else horas_teoriaErr"></div>
+      <ng-template #horas_teoriaErr>
+        <div *ngIf="horas_teoria.errors?.required" class="alert alert-danger p-0 mb-1">
+          Se necesita asignarle horas de teoría al curso.
+        </div>
+        <div *ngIf="horas_teoria.errors?.pattern" class="alert alert-danger p-0 mb-1">
+          Ingresar un numero entero positivo menor de 4 dígitos.
+        </div>
+        <div *ngIf="horas_teoria.errors?.min" class="alert alert-danger p-0 mb-1">
+          Debe ser mayor que cero.
+        </div>
+      </ng-template>
+    </div>
+
+
+
+    <div class="form-group">
+      <input class="form-control bg-light shadow-sm" type="number" placeholder="* Horas de práctica..."
+        id="horas_practica" name="horas_practica" required pattern="^[0-9]{1,4}$" min="0"
+        [(ngModel)]="curso.horasPractica" #horas_practica="ngModel">
+      <div *ngIf="horas_practica.valid || horas_practica.pristine;then space else horas_practicaErr"></div>
+      <ng-template #horas_practicaErr>
+        <div *ngIf="horas_practica.errors?.required" class="alert alert-danger p-0 mb-1">
+          Se necesita asignarle horas de práctica al curso. (colocar cero si no tiene).
+        </div>
+        <div *ngIf="horas_practica.errors?.pattern" class="alert alert-danger p-0 mb-1">
+          Ingresar un numero entero positivo menor de 4 dígitos.
+        </div>
+        <div *ngIf="horas_practica.errors?.min" class="alert alert-danger p-0 mb-1">
+          Debe ser mayor o igual que cero.
+        </div>
+      </ng-template>
+    </div>
+
+
+
+    <div class="form-group">
+      <textarea class="form-control bg-light shadow-sm" placeholder="* Escriba una sumilla..." name="sumilla"
+        id="sumilla" rows="10" required [(ngModel)]="curso.sumilla" #sumilla="ngModel"></textarea>
+      <div *ngIf="sumilla.valid || sumilla.pristine;then space else sumillaErr"></div>
+      <ng-template #sumillaErr>
+        <div *ngIf="sumilla.errors?.required" class="alert alert-danger p-0 mb-1">
+          El curso necesita una breve sumilla.
+        </div>
+      </ng-template>
+    </div>
+
+
+    <div class="d-grid gap-2">
+      <button class="btn btn-primary" type="submit" [disabled]="saveForm.invalid">{{formButton}}</button>
+      <a class="btn btn-outline-primary" routerLink="/">Cancelar</a>
+    </div>
+  </form>
+
+  <ng-template #space>
+    <br />
+  </ng-template>
+
 </div>

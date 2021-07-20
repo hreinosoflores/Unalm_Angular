@@ -15,25 +15,25 @@ export class CursosService {
 
   constructor(private http: HttpClient) { }
 
-  getCursos():Observable<Curso[]>{
+  getCursos(): Observable<Curso[]> {
     return this.http.get<Curso[]>(this.apiURL);
   }
 
-  getCursoById(id:number):Observable<Curso>{
+  getCursoById(id: number): Observable<Curso> {
     return this.http.get<Curso>(`${this.apiURL}/${id}`);
   }
 
-  saveCurso(curso:Curso):Observable<Curso>{
+  saveCurso(curso: Curso): Observable<Curso> {
     curso.updatedAt = new Date();
-    if(!curso.id){
+    if (!curso.id) {
       curso.createdAt = new Date();
       return this.http.post<Curso>(this.apiURL, curso);
-    }else{
+    } else {
       return this.http.put<Curso>(`${this.apiURL}/${curso.id}`, curso);
     }
   }
 
-  deleteCurso(id:number):Observable<any>{
+  deleteCurso(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiURL}/${id}`);
   }
 

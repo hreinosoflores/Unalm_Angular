@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class ConfirmacionService {
 
-  confirmText:string;
+  confirmText: string;
 
   constructor() {
-    this.confirmText='';
+    this.confirmText = '';
   }
 }

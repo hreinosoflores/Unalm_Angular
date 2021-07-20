@@ -7,17 +7,17 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-lista',
   templateUrl: './lista.component.html',
-  styleUrls:['./lista.component.css']
+  styleUrls: ['./lista.component.css']
 })
-export class ListaComponent implements OnInit,OnDestroy {
+export class ListaComponent implements OnInit, OnDestroy {
 
   cursos: Curso[] = [];
 
-  pagina:number=1;
+  pagina: number = 1;
 
-  formatoFecha='dd/MM/yyyy h:mm:ss a';
+  formatoFecha = 'dd/MM/yyyy h:mm:ss a';
 
-  get confirmText(){
+  get confirmText() {
     return this.confirmSvc.confirmText;
   }
 
@@ -27,23 +27,25 @@ export class ListaComponent implements OnInit,OnDestroy {
 
   constructor(
     private cursoSvc: CursosService,
-    private confirmSvc:ConfirmacionService) { }
+    private confirmSvc: ConfirmacionService) { }
 
 
   ngOnInit(): void {
     this.cursoSvc.getCursos().subscribe(
       cursos => {
-        this.cursos = [...cursos];
+        this.cursos = [...cursos.sort((a, b) => {
+          if (a === b) return 0;
+          if (a.updatedAt! > b.updatedAt!) return -1;
+          else return 1;
+        })];
       }
     );
-
-    console.log(this.confirmText);
 
     document.title = environment.title + 'Nuestros Cursos';
   }
 
   ngOnDestroy(): void {
-    this.confirmText='';
+    this.confirmText = '';
   }
 
 }

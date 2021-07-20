@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   apiUrlCursos: '/api/Cursos',
   apiUrlContacto: '/api/BandejaMensajes',
-  title:'UNALM | '
+  title: 'UNALM | '
 };
 
 /*

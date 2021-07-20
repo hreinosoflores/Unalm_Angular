@@ -24,9 +24,9 @@ export class DetallesComponent implements OnInit {
     this.activateRoute.queryParams.subscribe(params => {
       this.cursoSvc.getCursoById(params.id).subscribe(
         curso => {
-        this.curso = curso;
-        document.title = environment.title + this.curso.nombre;
-      }
+          this.curso = curso;
+          document.title = environment.title + this.curso.nombre;
+        }
 
       )
     });
@@ -36,7 +36,7 @@ export class DetallesComponent implements OnInit {
 
   onDelete(): void {
     var aceptado = confirm('¿Desea eliminar este curso?');
-    if(aceptado){
+    if (aceptado) {
       this.cursoSvc.deleteCurso(this.curso.id!).subscribe(
         () => this.router.navigate(['/'])
       );

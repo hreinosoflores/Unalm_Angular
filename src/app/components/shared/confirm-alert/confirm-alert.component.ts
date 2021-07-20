@@ -6,11 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ConfirmAlertComponent implements OnInit {
 
-  @Input() text:string;
+  @Input() text: string;
 
   constructor() {
-    this.text='';
-   }
+    this.text = '';
+  }
 
   ngOnInit(): void {
   }

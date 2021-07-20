@@ -4,7 +4,6 @@ import { CursosService } from 'src/app/services/cursos.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { EventEmitter } from '@angular/core';
 import { ConfirmacionService } from 'src/app/services/confirmacion.service';
 
 @Component({
@@ -16,9 +15,6 @@ export class SaveComponent implements OnInit {
   curso: Curso = {
     codigo: '',
     nombre: '',
-    creditos: 0,
-    horasTeoria: 0,
-    horasPractica: 0,
     sumilla: ''
   };
 

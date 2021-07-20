@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { ConfirmacionService } from './services/confirmacion.service';
 
 
@@ -7,23 +7,17 @@ import { ConfirmacionService } from './services/confirmacion.service';
   template: `
     <div id="app" class="d-flex flex-column">
       <app-header></app-header>
-      <main class="container-fluid">
+      <main class="container-fluid col-12 col-lg-8 mx-auto">
         <router-outlet></router-outlet>
       </main>
       <app-footer></app-footer>
     </div>
   `
 })
-export class AppComponent{
+export class AppComponent {
 
-  get confirmText(){
-    return this.confirmSvc.confirmText;
-  }
-
-  constructor(private confirmSvc:ConfirmacionService) {
-
+  constructor(private confirmSvc: ConfirmacionService) {
 
   }
-
 
 }

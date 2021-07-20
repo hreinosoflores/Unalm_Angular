@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cursos',
-  templateUrl: './cursos.component.html'
+  template: `<router-outlet></router-outlet>`
 })
 export class CursosComponent implements OnInit {
 

@@ -1,62 +1,43 @@
-<div class="container">
+<div class="bg-white p-4 shadow rounded">
 
-  <div class="bg-white p-5 shadow rounded col-sm-10 col-lg-6 mx-auto">
+  <span class="display-6 cursoTitle">Detalles del Curso</span>
 
+  <hr>
 
-    <!-- @include('partials.session-status') -->
+  <div class="btn-group d-flex justify-content-between align-items-center">
+    <a class="btn btn-primary" [routerLink]="['/cursos/save']" [queryParams]="{id: curso?.id}">Editar Información</a>
+    <a class="btn btn-danger" (click)="onDelete()">
+      Eliminar Curso</a>
+  </div>
 
-    <h1 class="display-8 cursoTitle">Detalles del Curso</h1>
+  <br>
 
-    <hr>
+  <strong class="text-secondary">Creado a las:</strong>
+  <p class="text-secondary">{{curso?.createdAt | date:formatoFecha}}</p>
 
-    <!-- <form class="d-none" id="delete-curso" action="{{route('curso.destroy',$curso->id)}}" method="post">
-      @csrf
-      @method('DELETE')
-    </form>
+  <strong class="text-secondary">Última modificación a las: </strong>
+  <p class="text-secondary">{{curso?.updatedAt | date:formatoFecha}}</p>
 
-    <div class="btn-group d-flex justify-content-between align-items-center">
-      <a class="btn btn-primary" href="{{route('curso.edit',$curso->id)}}">Editar Información</a>
-      <a class="btn btn-danger" href="#" onclick="document.getElementById('delete-curso').submit()">
-        Eliminar Curso</a>
-    </div> -->
+  <strong class="text-secondary">Código</strong>
+  <p class="text-secondary">{{curso?.codigo}}</p>
 
+  <strong class="text-secondary">Nombre</strong>
+  <p class="text-secondary">{{curso?.nombre}}</p>
 
-    <div class="btn-group d-flex justify-content-between align-items-center">
-      <a class="btn btn-primary" [routerLink]="['/cursos/save']" [queryParams]="{id: curso?.id}">Editar Información</a>
-      <a class="btn btn-danger" (click)="onDelete()">
-        Eliminar Curso</a>
-    </div>
+  <strong class="text-secondary">Créditos</strong>
+  <p class="text-secondary">{{curso?.creditos}}</p>
 
-    <br>
+  <strong class="text-secondary">Horas de teoría</strong>
+  <p class="text-secondary">{{curso?.horasTeoria}}</p>
 
-    <strong class="text-secondary">Creado a las:</strong>
-    <p class="text-secondary">{{curso?.createdAt | date:formatoFecha}}</p>
+  <strong class="text-secondary">Horas de práctica</strong>
+  <p class="text-secondary">{{curso?.horasPractica}}</p>
 
-    <strong class="text-secondary">Última modificación a las: </strong>
-    <p class="text-secondary">{{curso?.updatedAt | date:formatoFecha}}</p>
+  <strong class="text-secondary">Sumilla</strong>
+  <p class="text-secondary">{{curso?.sumilla}}</p>
 
-    <strong class="text-secondary">Código</strong>
-    <p class="text-secondary">{{curso?.codigo}}</p>
-
-    <strong class="text-secondary">Nombre</strong>
-    <p class="text-secondary">{{curso?.nombre}}</p>
-
-    <strong class="text-secondary">Créditos</strong>
-    <p class="text-secondary">{{curso?.creditos}}</p>
-
-    <strong class="text-secondary">Horas de teoría</strong>
-    <p class="text-secondary">{{curso?.horasTeoria}}</p>
-
-    <strong class="text-secondary">Horas de práctica</strong>
-    <p class="text-secondary">{{curso?.horasPractica}}</p>
-
-    <strong class="text-secondary">Sumilla</strong>
-    <p class="text-secondary">{{curso?.sumilla}}</p>
-
-    <div class="d-grid gap-2">
-        <a class="btn btn-outline-primary" routerLink="/">Regresar</a>
-    </div>
-
+  <div class="d-grid gap-2">
+    <a class="btn btn-outline-primary" routerLink="/">Regresar</a>
   </div>
 
 </div>

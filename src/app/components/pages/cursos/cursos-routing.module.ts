@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CursosComponent } from './cursos.component';
 import { DetallesComponent } from './detalles/detalles.component';
 import { ListaComponent } from './lista/lista.component';
 import { SaveComponent } from './save/save.component';

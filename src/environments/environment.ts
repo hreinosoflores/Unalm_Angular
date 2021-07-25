@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrlCursos: '/api/Cursos',
-  apiUrlContacto: '/api/BandejaMensajes',
+  apiUrlCursos: 'http://localhost:40009/api/Cursos',
+  apiUrlContacto: 'http://localhost:40009/api/BandejaMensajes',
   title: 'UNALM | '
 };
 

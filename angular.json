@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "unalmAngular:build:production"
+              "buildTarget": "unalmAngular:build:production"
             },
             "development": {
-              "browserTarget": "unalmAngular:build:development"
+              "buildTarget": "unalmAngular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "unalmAngular:build"
+            "buildTarget": "unalmAngular:build"
           }
         },
         "test": {

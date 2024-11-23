@@ -6,8 +6,9 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-detalles',
-  templateUrl: './detalles.component.html'
+    selector: 'app-detalles',
+    templateUrl: './detalles.component.html',
+    standalone: false
 })
 export class DetallesComponent implements OnInit {
 

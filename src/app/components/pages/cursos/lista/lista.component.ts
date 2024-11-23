@@ -5,9 +5,10 @@ import { CursosService } from 'src/app/services/cursos.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-lista',
-  templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.css']
+    selector: 'app-lista',
+    templateUrl: './lista.component.html',
+    styleUrls: ['./lista.component.css'],
+    standalone: false
 })
 export class ListaComponent implements OnInit, OnDestroy {
 

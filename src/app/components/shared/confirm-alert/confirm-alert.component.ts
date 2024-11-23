@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-confirm-alert',
-  templateUrl: './confirm-alert.component.html'
+    selector: 'app-confirm-alert',
+    templateUrl: './confirm-alert.component.html',
+    standalone: false
 })
 export class ConfirmAlertComponent implements OnInit {
 

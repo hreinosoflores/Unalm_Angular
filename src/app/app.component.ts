@@ -3,8 +3,8 @@ import { ConfirmacionService } from './services/confirmacion.service';
 
 
 @Component({
-  selector: 'app-root',
-  template: `
+    selector: 'app-root',
+    template: `
     <div id="app" class="d-flex flex-column">
       <app-header></app-header>
       <main class="container-fluid col-12 col-lg-8 mx-auto">
@@ -12,7 +12,8 @@ import { ConfirmacionService } from './services/confirmacion.service';
       </main>
       <app-footer></app-footer>
     </div>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {
 

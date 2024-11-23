@@ -6,8 +6,9 @@ import { ConfirmacionService } from 'src/app/services/confirmacion.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html'
+    selector: 'app-contact',
+    templateUrl: './contact.component.html',
+    standalone: false
 })
 export class ContactComponent implements OnInit {
 

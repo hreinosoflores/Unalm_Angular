@@ -7,8 +7,9 @@ import { environment } from 'src/environments/environment';
 import { ConfirmacionService } from 'src/app/services/confirmacion.service';
 
 @Component({
-  selector: 'app-save',
-  templateUrl: './save.component.html'
+    selector: 'app-save',
+    templateUrl: './save.component.html',
+    standalone: false
 })
 export class SaveComponent implements OnInit {
 

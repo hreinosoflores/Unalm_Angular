@@ -6,13 +6,13 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Component({
-    selector: 'app-detalles',
-    templateUrl: './detalles.component.html',
-    standalone: false
+  selector: 'app-detalles',
+  templateUrl: './detalles.component.html',
+  standalone: false
 })
 export class DetallesComponent implements OnInit {
 
-  curso!: Curso;
+  curso: Curso | null = null;
 
   formatoFecha = 'dd/MM/yyyy h:mm:ss a';
 
@@ -37,7 +37,7 @@ export class DetallesComponent implements OnInit {
 
   onDelete(): void {
     var aceptado = confirm('¿Desea eliminar este curso?');
-    if (aceptado) {
+    if (aceptado && this.curso) {
       this.cursoSvc.deleteCurso(this.curso.id!).subscribe(
         () => this.router.navigate(['/'])
       );

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Curso } from 'src/app/interfaces/curso.interface';
 import { CursosService } from 'src/app/services/cursos.service';
 import { Router } from '@angular/router';
@@ -7,9 +7,9 @@ import { environment } from 'src/environments/environment';
 import { ConfirmacionService } from 'src/app/services/confirmacion.service';
 
 @Component({
-    selector: 'app-save',
-    templateUrl: './save.component.html',
-    standalone: false
+  selector: 'app-save',
+  templateUrl: './save.component.html',
+  standalone: false
 })
 export class SaveComponent implements OnInit {
 

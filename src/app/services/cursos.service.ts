@@ -33,8 +33,8 @@ export class CursosService {
     }
   }
 
-  deleteCurso(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiURL}/${id}`);
+  deleteCurso(id: number): Observable<number> {
+    return this.http.delete<number>(`${this.apiURL}/${id}`);
   }
 
 }

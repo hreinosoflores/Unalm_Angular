@@ -36,7 +36,7 @@ export class DetallesComponent implements OnInit {
   }
 
   onDelete(): void {
-    var aceptado = confirm('¿Desea eliminar este curso?');
+    const aceptado = confirm('¿Desea eliminar este curso?');
     if (aceptado && this.curso) {
       this.cursoSvc.deleteCurso(this.curso.id!).subscribe(
         () => this.router.navigate(['/'])
